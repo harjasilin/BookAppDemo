@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './src/screens/splashScreen';
 import AnimTab1 from './src/navigation/animation';
 import DetailScreen from './src/screens/detail/detailScreen';
-import { ReviewScreen } from './src/screens/review/reviweListScreen';
+import { ReviewScreen } from './src/screens/review/reviewListScreen';
 import { HelpScreen } from './src/screens/help/help';
 const Stack = createStackNavigator();
 
