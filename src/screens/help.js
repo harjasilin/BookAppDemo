@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { Star, StarFilled } from "../asset/icons/svg";
 export const HelpScreen = () => {
     const reviews = useSelector((state) => state.review.reviews); 
-    console.log(reviews,'++++++++++')
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 0; i < 5; i++) {

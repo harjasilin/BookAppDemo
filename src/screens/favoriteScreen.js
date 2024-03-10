@@ -8,7 +8,6 @@ const FavoriteScreen = ({ navigation }) => {
     const favorites = useSelector((state) => state.book.favorites)
     const bookData = useSelector((state) => state.book.books)
      const filterdBooks = bookData?.docs.filter(item => favorites?.includes(item?._version_.toString()));
-   console.log(favorites,'favorites',filterdBooks)
 
     return (
         <ScrollView style={styles.container}>
