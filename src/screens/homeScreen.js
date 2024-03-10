@@ -24,6 +24,12 @@ export const HomeScreen = () => {
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'lightblue', padding: 10 }}>
+            <Text style={{fontSize:20,color:'red',marginTop:10,fontWeight:'bold'}}>
+                Hi Alex
+            </Text>
+            <Text style={{fontSize:20,color:'black',marginTop:5,fontWeight:'bold'}}>
+                Keep Exploring
+            </Text>
             <TextInput placeholder="Start typing..."
                 placeholderTextColor={'black'}
                 value={searchQuery}
@@ -35,7 +41,7 @@ export const HomeScreen = () => {
                     paddingStart: 10,
                     marginTop: 20
                 }} />
-                <View style={{margin:10}}>
+                <View style={{}}>
                     {filteredBooks?.map((book,index)=>(
                         <Card data={book} key={index}/>
                     ))}

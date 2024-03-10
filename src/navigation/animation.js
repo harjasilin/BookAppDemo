@@ -7,24 +7,25 @@ import * as Animatable from 'react-native-animatable';
 import { HomeScreen } from '../screens/homeScreen';
 import FavoriteScreen from '../screens/favoriteScreen';
 import { HelpScreen } from '../screens/help';
+import { FavIconFilled,Book,Help } from '../asset/icons/svg';
 
 const TabArr = [
     {
         route: 'HomeScreen',
         label: 'Library',
-        icon: '',
+        icon: Book,
         component: HomeScreen,
     },
     {
         route: 'FavoriteScreen',
         label: 'Wish List',
-        icon: '',
+        icon: FavIconFilled,
         component: FavoriteScreen,
     },
     {
         route: 'HelpScreen',
         label: 'Review',
-        icon: '',
+        icon: Help,
         component: HelpScreen,
     },
 ];
@@ -76,7 +77,7 @@ const TabButton = props => {
             <Animatable.View ref={viewRef} duration={1000} style={styles.container}>
                 <View style={[styles.btn]}>
                     <Animatable.View ref={circleRef} style={[styles.circle]} />
-                    <Image
+                    {/* <Image
                         // tintColor={focused ? '' : 'gray'}
                         resizeMode="contain"
                         source={require('../asset/images/logo.png')}
@@ -87,7 +88,8 @@ const TabButton = props => {
                             // tintColor: focused
                             //     ? 'white'
                             //     : 'gray',
-                        }}></Image>
+                        }}></Image> */}
+                        <item.icon height={index == 2 ? 25 : 25} width= {index == 2 ? 25 : 25}/>
                 </View>
                 <Animatable.Text ref={textRef} style={styles.text}>
                     {item.label}
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         borderRadius: 25,
     },
     text: {
