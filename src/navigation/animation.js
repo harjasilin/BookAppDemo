@@ -4,9 +4,9 @@ import {
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { HomeScreen } from '../screens/homeScreen';
-import FavoriteScreen from '../screens/favoriteScreen';
-import { HelpScreen } from '../screens/help';
+import { HomeScreen } from '../screens/home/homeScreen';
+import FavoriteScreen from '../screens/favorite/favoriteScreen';
+import { HelpScreen } from '../screens/help/help';
 import { FavIconFilled,Book,Help } from '../asset/icons/svg';
 
 const TabArr = [
@@ -77,18 +77,6 @@ const TabButton = props => {
             <Animatable.View ref={viewRef} duration={1000} style={styles.container}>
                 <View style={[styles.btn]}>
                     <Animatable.View ref={circleRef} style={[styles.circle]} />
-                    {/* <Image
-                        // tintColor={focused ? '' : 'gray'}
-                        resizeMode="contain"
-                        source={require('../asset/images/logo.png')}
-                        style={{
-                            height: index == 2 ? 25 : 25,
-                            width: index == 2 ? 25 : 25,
-                            resizeMode: 'contain',
-                            // tintColor: focused
-                            //     ? 'white'
-                            //     : 'gray',
-                        }}></Image> */}
                         <item.icon height={index == 2 ? 25 : 25} width= {index == 2 ? 25 : 25}/>
                 </View>
                 <Animatable.Text ref={textRef} style={styles.text}>
@@ -136,11 +124,6 @@ const styles = StyleSheet.create({
     },
     tabBar: {
         height: 60,
-        // position: 'absolute',
-        // bottom: 16,
-        // right: 16,
-        // left: 16,
-        // borderRadius: 16,
     },
     btn: {
         width: 40,

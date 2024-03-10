@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Pressable } from "react-native";
+import React from "react";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import { Back } from "../asset/icons/svg";
 import { useNavigation } from "@react-navigation/native";
 const HeaderComponent = ({ title }) => {
-    const text_Color = '#1f1f5d'
 const navigation=useNavigation();
 
     return (
@@ -19,7 +18,11 @@ const navigation=useNavigation();
 export default HeaderComponent
 const styles = StyleSheet.create({
     page: {
-        marginTop: 10, flexDirection:'row',gap:10,alignItems:'center',padding:10
+        marginTop: 10, 
+        flexDirection:'row',
+        gap:10,
+        alignItems:'center',
+        padding:10
     },
     text: {
         fontSize: 20,
