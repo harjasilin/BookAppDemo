@@ -18,7 +18,7 @@ const SplashScreen = ({ navigation }) => {
     }, [navigation]);
     
     const getBook = () => {
-        fetch("https://openlibrary.org/search.json?title=")
+        fetch("https://openlibrary.org/search.json?title=the+lord+of+the+rings")
             .then(res => res.json())
             .then(json => {
                 dispatch(importBook(json));
@@ -30,7 +30,7 @@ const SplashScreen = ({ navigation }) => {
                 animation="zoomIn"
                 duration={3500}
                 delay={1500}
-                source={{uri:'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=800'}}
+                source={{uri:'https://cdn.dribbble.com/userupload/13347380/file/original-0c998bd099060f437151f8b4576bc143.png?resize=2048x1536'}}
                 style={styles.image}
             />
         </View>

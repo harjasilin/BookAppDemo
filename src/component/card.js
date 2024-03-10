@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View, Text, Image, Platform } from "react-native";
-import { FavIcon } from "../asset/icons/svg";
-export const Card = ({data}) => {
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorite, removeFromFavorite } from "../action/action";
+import { FavIcon, FavIconFilled } from "../asset/icons/svg";
+export const Card = ({ data }) => {
+    const navigation = useNavigation();
+    const dispatch = useDispatch()
+    const imageUri = `https://covers.openlibrary.org/b/id/${data?.cover_i}.jpg`;
+    const favorites = useSelector((state) => state.book.favorites)
+    const isFavorite = favorites?.includes(data?._version_.toString());
+    const toggleFavorite = () => {
+        if (isFavorite) {
+            dispatch(removeFromFavorite(data._version_.toString()));
+        } else {
+            dispatch(addToFavorite(data._version_.toString()));
+        }
+    };
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('DetailScreen' ,{ data: data,imageUri:imageUri })}>
             <View style={{ margin: 10, flexDirection: 'row', alignItems: 'center', gap: 10, width: '100%', }}>
                 <View
                     style={{
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: 'red',
+                        backgroundColor: 'white',
                         height: 150, width: '30%', borderRadius: 20,
                         ...Platform.select({
                             android: {
@@ -22,25 +37,32 @@ export const Card = ({data}) => {
                                 shadowRadius: 4,
                             },
                         })
-                    }
-                    }
+                    }}
                 >
+                    {data?.cover_i ?
+                        <Image style={{ height: 150, width: '100%', borderRadius: 20, resizeMode: 'cover', }}
+                            source={{ uri: imageUri }}
+                        /> :
+                        <Image style={{ height: 150, width: '100%', borderRadius: 20, resizeMode: 'cover', }}
+                            source={require('../asset/images/cover_not_found.jpg')}
+                        />}
 
-                    <Image style={{ height: 150, width: '100%', borderRadius: 20, resizeMode: 'cover', }}
-                        source={{ uri: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=800' }} />
                 </View>
                 <View style={{ width: '60%' }}>
                     <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 17, letterSpacing: 0.1 }}
                         numberOfLines={1}>
                         {data?.title}</Text>
                     <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 16, letterSpacing: 0.1 }}
-                        numberOfLines={1}>
-                        {data?.author_name}</Text>
+                        numberOfLines={2}>
+                        {data?.author_name?.join(' , ')}</Text>
 
-                    <Text style={{ fontSize: 15, marginTop: 7, color: 'black' }}>2012, Published by me</Text>
+                    <Text style={{ fontSize: 15, marginTop: 7, color: 'black' }}>{data?.first_publish_year}, Total edition {data?.edition_count}</Text>
                     <View style={{ marginTop: 10 }}>
-                        <FavIcon height={30} width={30} />
-                        {/* <FavIconFilled height={30} width={30}/> */}
+                    <TouchableOpacity onPress={toggleFavorite}>
+                            {isFavorite ? <FavIconFilled height={30} width={30} /> :
+                                <FavIcon height={30} width={30} />
+                            }
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Pressable } from "react-native";
+import { Back } from "../asset/icons/svg";
+import { useNavigation } from "@react-navigation/native";
 const HeaderComponent = ({ title }) => {
     const text_Color = '#1f1f5d'
-
+const navigation=useNavigation();
 
     return (
         <View style={styles.page}>
+            <Pressable onPress={()=>navigation.goBack()}>
+            <Back height={20} width={20}/>
+            </Pressable>
             <Text style={styles.text}>{title}</Text>
         </View>
 
@@ -14,7 +19,7 @@ const HeaderComponent = ({ title }) => {
 export default HeaderComponent
 const styles = StyleSheet.create({
     page: {
-        marginTop: 20, alignItems: 'center'
+        marginTop: 10, flexDirection:'row',gap:10,alignItems:'center',padding:10
     },
     text: {
         fontSize: 20,

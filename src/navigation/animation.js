@@ -5,7 +5,8 @@ import React, { useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { HomeScreen } from '../screens/homeScreen';
-import { FavoriteScreen } from '../screens/favoriteScreen';
+import FavoriteScreen from '../screens/favoriteScreen';
+import { HelpScreen } from '../screens/help';
 
 const TabArr = [
     {
@@ -19,6 +20,12 @@ const TabArr = [
         label: 'Wish List',
         icon: '',
         component: FavoriteScreen,
+    },
+    {
+        route: 'HelpScreen',
+        label: 'Review',
+        icon: '',
+        component: HelpScreen,
     },
 ];
 
@@ -70,16 +77,16 @@ const TabButton = props => {
                 <View style={[styles.btn]}>
                     <Animatable.View ref={circleRef} style={[styles.circle]} />
                     <Image
-                        tintColor={focused ? 'white' : 'gray'}
+                        // tintColor={focused ? '' : 'gray'}
                         resizeMode="contain"
-                        source={{ uri: 'https://www.shutterstock.com/shutterstock/photos/738763579/display_1500/stock-vector-magnifying-glass-or-search-icon-flat-vector-graphic-on-isolated-background-738763579.jpg' }}
+                        source={require('../asset/images/logo.png')}
                         style={{
                             height: index == 2 ? 25 : 25,
                             width: index == 2 ? 25 : 25,
                             resizeMode: 'contain',
-                            tintColor: focused
-                                ? 'white'
-                                : 'gray',
+                            // tintColor: focused
+                            //     ? 'white'
+                            //     : 'gray',
                         }}></Image>
                 </View>
                 <Animatable.Text ref={textRef} style={styles.text}>
@@ -147,7 +154,7 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'orange',
+        backgroundColor: 'red',
         borderRadius: 25,
     },
     text: {
