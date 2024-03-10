@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Pressable 
 import { useRoute } from '@react-navigation/native';
 import { addToFavorite, removeFromFavorite, } from "../action/action";
 import { useDispatch, useSelector } from "react-redux";
-import { FavIcon, FavIconFilled, Star, StarFilled } from "../asset/icons/svg";
+import { Back, FavIcon, FavIconFilled, Star, StarFilled } from "../asset/icons/svg";
 import { useNavigation } from "@react-navigation/native";
 const DetailScreen = ({ }) => {
 const navigation=useNavigation();
@@ -39,6 +39,9 @@ const navigation=useNavigation();
     };
     return (
         <ScrollView style={styles.container}>
+            <Pressable style={{marginTop:20}} onPress={()=>navigation.goBack()}>
+             <Back height={25}  width={25}/>
+             </Pressable>
             {dataList?.cover_i ?
                 <Image
                     source={{ uri: image }}
